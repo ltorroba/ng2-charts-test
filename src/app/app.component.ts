@@ -1,4 +1,4 @@
-import { Component, NgModule, AfterViewChecked } from '@angular/core'
+import { Component, NgModule, AfterViewInit } from '@angular/core'
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
-export class AppComponent implements AfterViewChecked {
+export class AppComponent implements AfterViewInit {
   private datasets = [
     {
       label: "# of Votes",
@@ -30,16 +30,17 @@ export class AppComponent implements AfterViewChecked {
     }
   };
 
-  ngAfterViewChecked() {
+  ngAfterViewInit() {
     let timer = Observable.timer(2000, 1000);
 
-    /*timer.subscribe(() => {
+    timer.subscribe(() => {
+      console.log('hi');
       this.datasets = [
       {
         label: "# of Votes",
         data: [12, 19, 3, 5, 2, 3]
       }];
-    });*/
+    });
 
   }
 }
